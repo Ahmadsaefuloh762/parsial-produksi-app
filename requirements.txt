@@ -1,5 +1,5 @@
 streamlit
-sympy as sp
+sympy 
 numpy
 matplotlib
 plotly
