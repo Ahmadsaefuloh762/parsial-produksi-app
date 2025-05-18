@@ -1,0 +1,5 @@
+streamlit
+sympy as sp
+numpy
+matplotlib
+plotly
