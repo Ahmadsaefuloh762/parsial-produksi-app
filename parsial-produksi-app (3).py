@@ -5,24 +5,26 @@ import matplotlib.pyplot as plt
 
 st.title("Aplikasi Turunan Parsial")
 
+# Input dari pengguna
+f_input = st.text_input("Masukkan fungsi f(x, y):", "x**2 + y**2")
+x_val = st.number_input("Nilai x pada titik evaluasi:", value=1.0)
+y_val = st.number_input("Nilai y pada titik evaluasi:", value=1.0)
+
+# Simbol
 x, y = sp.symbols('x y')
-fungsi_str = st.text_input("Masukkan fungsi f(x, y):", "x*2 * y + y*3")
 
 try:
-    f = sp.sympify(fungsi_str)
+    # Konversi input jadi ekspresi simbolik
+    f = sp.sympify(f_input)
+
+    # Turunan parsial
     fx = sp.diff(f, x)
     fy = sp.diff(f, y)
 
-    st.latex(f"f(x, y) = {sp.latex(f)}")
-    st.latex(f"\\frac{{\\partial f}}{{\\partial x}} = {sp.latex(fx)}")
-    st.latex(f"\\frac{{\\partial f}}{{\\partial y}} = {sp.latex(fy)}")
-
-    x0 = st.number_input("Nilai x₀:", value=1.0)
-    y0 = st.number_input("Nilai y₀:", value=2.0)
-
-    f_val = f.subs({x: x0, y: y0})
-    fx_val = fx.subs({x: x0, y: y0})
-    fy_val = fy.subs({x: x0, y: y0})
+    # Evaluasi nilai fungsi dan turunannya di titik (x_val, y_val)
+    f_val = f.subs({x: x_val, y: y_val})
+    fx_val = fx.subs({x: x_val, y: y_val})
+    fy_val = fy.subs({x: x_val, y: y_val})
 
     st.write("Nilai fungsi di titik (x₀, y₀):", f_val)
     st.write("Gradien di titik (x₀, y₀):", f"({fx_val}, {fy_val})")
