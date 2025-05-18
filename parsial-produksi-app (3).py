@@ -33,7 +33,7 @@ try:
     y_vals = np.linspace(y0 - 2, y0 + 2, 50)
     X, Y = np.meshgrid(x_vals, y_vals)
     Z = sp.lambdify((x, y), f, 'numpy')(X, Y)
-    Z_tangent = float(f_val) + float(fx_val)(X - x0) + float(fy_val)(Y - y0)
+    z_tangent = f_val + fx_val * (x - x_val) + fy_val * (y - y_val)
 
     fig = plt.figure(figsize=(10, 6))
     ax = fig.add_subplot(111, projection='3d')
