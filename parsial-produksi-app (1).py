@@ -30,7 +30,7 @@ try:
     st.write(f"Turunan parsial terhadap y di titik ({x_val}, {y_val}) = {fy_val}")
 
     # Persamaan bidang singgung
-    z_tangent = float(f_val) + float(fx_val)*(x - x_val) + float(fy_val)*(y - y_val)
+    z_tangent = f_val + fx_val * (x - x_val) + fy_val * (y - y_val)
     st.latex(f"\\text{{Bidang Singgung: }} z = {z_tangent}")
 
     # Visualisasi
@@ -40,7 +40,7 @@ try:
     f_lambd = sp.lambdify((x, y), f, "numpy")
     tangent_lambd = sp.lambdify((x, y), z_tangent, "numpy")
 
-    Z = f_lambd(X, Y)
+    tangent_lambd = sp.lambdify((x, y), z_tangent, "numpy")
     Z_tangent = tangent_lambd(X, Y)
 
     fig = plt.figure()
